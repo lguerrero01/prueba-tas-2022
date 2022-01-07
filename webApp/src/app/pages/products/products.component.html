@@ -1,1 +1,44 @@
-<p>products works!</p>
+<div class="container pt-5">
+    <form #form="ngForm" class="align-content-center">
+        <div class="row ">
+            <div class="input-group col m-2">
+                <span class="input-group-text" id="basic-addon3">Buscar Producto</span>
+                <input [(ngModel)]="name" name="name" class="form-control" id="basic-url"
+                    aria-describedby="basic-addon3">
+            </div>
+
+            <div class="input-group col m-2">
+                <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+                <select class="form-select" name="categories" [(ngModel)]="categories">
+                    <!-- <option value="" selected disabled hidden>Choose here</option> -->
+                    <option *ngFor="let categories of allCategory" [value]="categories.categori_id">{{ categories.name |
+                        uppercase }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-start">
+            <div class="input-group">
+                <h3> Ordernar por precios:</h3>
+                <button class="btn btn-primary m-1 rounded-pill" (click)="orderDesc()">Mayor Precio</button>
+                <button class="btn btn-primary m-1 rounded-pill" (click)="orderAsc()">Menor Precio</button>
+            </div>
+        </div>
+
+    </form>
+
+    <div *ngIf="productsFilter.length <= 0" class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    <div>
+        
+        <div class="row row-cols-3 p-2">
+            <app-card-product class="col" *ngFor="let product of productsFilter | productFilter: form.value"
+                [product]="product"> </app-card-product>
+        </div>
+
+    </div>
+
+</div>

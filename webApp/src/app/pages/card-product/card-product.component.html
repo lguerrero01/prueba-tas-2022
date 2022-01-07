@@ -1,0 +1,22 @@
+<div class="card p-2 m-2">
+  <!-- coloco esto porque los links de las imagenes estan caidas-->
+  <img src="../../../assets/empty-img.png" class="card-img-top" alt="NO IMAGE">
+  <!-- <img src="{{product.img}}" class="card-img-top" alt="image"> -->
+
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h4 class="card-title">{{product.name}}
+        <i *ngIf="product.best_seller" class="fas fa-star"></i>
+      </h4>
+      <div class="fs-4 text-center">
+        $ {{product.price}}
+      </div>
+    </div>
+    <p class="card-text">{{product.description}}</p>
+    <div class="d-flex justify-content-between">
+      <button  *ngIf="product.available" class="btn btn-success" (click)="addCart(product)">Agregar al carrito</button>
+      <button *ngIf="!product.available" class="btn btn-danger " disabled>NO DISPONIBLE</button>
+    </div>
+
+  </div>
+</div>

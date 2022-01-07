@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   {
-    path: '', 
+    path: 'welcome', 
     component: HeaderComponent
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "",
+    redirectTo: "welcome",
   },
 
 ];
